@@ -62,8 +62,8 @@ namespace Bibliotheek_Opdracht
             soortItem2.Equals(3);
             Bezoeker bezoeker = new Bezoeker();
             Lid lid = new Lid();
-
-            bezoeker.ZoekItem(collectie);
+            bezoeker.ToonOverzicht(collectie);
+            //bezoeker.ZoekItem(collectie);
            
         }
     }

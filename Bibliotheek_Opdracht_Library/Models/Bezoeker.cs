@@ -112,142 +112,57 @@ namespace Bibliotheek_Opdracht_Library.Models
                             }
                         }
                     }
-                    else if (key1 == ConsoleKey.T)
-                    {
-                        Console.WriteLine("press a to see the full collection\npress d to see the droobed collection\npress v to see the avilauble itemes\n" +
-                            "press n to see non aveluble itemes...");
-                        ConsoleKey key2 = Console.ReadKey().Key;
-                        if (key2 == ConsoleKey.A)
-                        {
-                            Console.Clear();
-                            foreach (var itemA in collectie.ItemsInCollectie)
-                            {
-                                Console.WriteLine($"{itemA.ItemId}\t{itemA.Titel}\t{itemA.Uitgeleend}");
-                            }
-
-                        }
-                        else if (key2 == ConsoleKey.D)
-                        {
-                            Console.Clear();
-                            foreach (var itemA in collectie.AfgevoerdeItems)
-                            {
-                                Console.WriteLine($"{itemA.ItemId}\t{itemA.Titel}\t{itemA.Uitgeleend}\t{item.SoortItem}");
-                            }
-                        }
-                        else if (key2 == ConsoleKey.V)
-                        {
-                            Console.Clear();
-                            foreach (var itemA in collectie.ItemsInCollectie)
-                            {
-                                if (itemA.Uitgeleend)
-                                {
-                                    Console.WriteLine($"{itemA.ItemId}\t{itemA.Titel}\t{itemA.Uitgeleend}\t{item.SoortItem}");
-                                }
-                                continue;
-                            }
-                        }
-                        else if (key2 == ConsoleKey.N)
-                        {
-                            Console.Clear();
-                            foreach (var itemA in collectie.ItemsInCollectie)
-                            {
-                                if (!itemA.Uitgeleend)
-                                {
-                                    Console.WriteLine($"{itemA.ItemId}\t{itemA.Titel}\t{itemA.Uitgeleend}\t{item.SoortItem}");
-                                }
-                                continue;
-                            }
-                        }
-                    }
-
-
                     break;
                 default:
                     break;
             }
-
-            //switch (key)
-            //{
-            //    //case ConsoleKey.T:
-            //    //    Console.Clear();
-            //    //    Console.WriteLine("enter item titel...");
-            //    //    Item item = new Item();
-            //    //    iteincollectie.ItemsInCollectie.Add(item);
-            //    //    string itemTitel = Console.ReadLine();
-            //    //    if (item.Titel.Contains(itemTitel))
-            //    //    {
-            //    //        Console.WriteLine($"the {itemTitel} is exestied");
-            //    //    }
-            //    //    else
-            //    //    {
-            //    //        Console.WriteLine($"the {itemTitel} is not exestied");
-            //    //    }
-            //    //    break;
-            //    //case ConsoleKey.I:
-            //    //    Console.Clear();
-            //    //    Console.WriteLine("enter item Id...");
-            //    //    Item item1 = new Item();
-            //    //    iteincollectie.ItemsInCollectie.Add(item1);
-            //    //    string itemId = Console.ReadLine();
-            //    //    if (item1.ItemId.Equals(itemId))
-            //    //    {
-            //    //        Console.WriteLine($"the {itemId} is exestied");
-            //    //    }
-            //    //    else
-            //    //    {
-            //    //        Console.WriteLine($"the {itemId} is not exestied");
-            //    //    }
-            //    //    break;
-            //    default:
-            //        break;
-            //}
-
-
         }
-        public void ToonOverzicht()//x4
+        public void ToonOverzicht(CollectieBibliotheek collectie)//x4
         {
+            Item item = new Item();
             Console.WriteLine("chse the disiered list...");
-            Console.WriteLine("A for the hol collection\nB for the afgevoerde\nC for the beschikbare\nD for the niet-beschikbare");
-
-            ConsoleKey consoleKey = Console.ReadKey().Key;
-            switch (consoleKey)
+            Console.WriteLine("press a to see the full collection\npress d to see the droobed collection\npress v to see the avilauble itemes\n" +
+                           "press n to see non aveluble itemes...");
+            ConsoleKey key2 = Console.ReadKey().Key;
+            switch (key2)
             {
                 case ConsoleKey.A:
-                    Console.Clear();
-                    CollectieBibliotheek collectieBibliotheek = new CollectieBibliotheek();
-                    foreach (var item in collectieBibliotheek.ItemsInCollectie)
+                    if (key2 == ConsoleKey.A)
                     {
-                        Console.WriteLine($"titel : {item.Titel}\tid : {item.ItemId}\tyear : {item.Jaartal}\tsoort : {item.SoortItem}");
-                    }
-                    break;
-                case ConsoleKey.B:
-                    Console.Clear();
-                    CollectieBibliotheek collectieBibliotheek1 = new CollectieBibliotheek();
-                    foreach (var item in collectieBibliotheek1.AfgevoerdeItems)
-                    {
-                        Console.WriteLine($"titel : {item.Titel}\tid : {item.ItemId}\tyear : {item.Jaartal}\tsoort : {item.SoortItem}");
-                    }
-                    break;
-                case ConsoleKey.C:
-                    Console.Clear();
-                    CollectieBibliotheek collectieBibliotheek2 = new CollectieBibliotheek();
-                    foreach (var item in collectieBibliotheek2.ItemsInCollectie)
-                    {
-                        if (item.Uitgeleend || item.Afgevoerd)
+                        Console.Clear();
+                        foreach (var itemA in collectie.ItemsInCollectie)
                         {
-                            Console.WriteLine($"titel : {item.Titel}\tid : {item.ItemId}\tyear : {item.Jaartal}\tsoort : {item.SoortItem}");
+                            Console.WriteLine($"{itemA.ItemId}\t{itemA.Titel}\t{itemA.Uitgeleend}");
                         }
-                        continue;
+
                     }
                     break;
                 case ConsoleKey.D:
                     Console.Clear();
-                    CollectieBibliotheek collectieBibliotheek3 = new CollectieBibliotheek();
-                    foreach (var item in collectieBibliotheek3.ItemsInCollectie)
+                    foreach (var itemA in collectie.AfgevoerdeItems)
                     {
-                        if (!item.Uitgeleend || !item.Afgevoerd)
+                        Console.WriteLine($"{itemA.ItemId}\t{itemA.Titel}\t{itemA.Uitgeleend}\t{item.SoortItem}");
+                    }
+
+                    break;
+                case ConsoleKey.V:
+                    Console.Clear();
+                    foreach (var itemA in collectie.ItemsInCollectie)
+                    {
+                        if (itemA.Uitgeleend)
                         {
-                            Console.WriteLine($"titel : {item.Titel}\tid : {item.ItemId}\tyear : {item.Jaartal}\tsoort : {item.SoortItem}");
+                            Console.WriteLine($"{itemA.ItemId}\t{itemA.Titel}\t{itemA.Uitgeleend}\t{item.SoortItem}");
+                        }
+                        continue;
+                    }
+                    break;
+                case ConsoleKey.N:
+                    Console.Clear();
+                    foreach (var itemA in collectie.ItemsInCollectie)
+                    {
+                        if (!itemA.Uitgeleend)
+                        {
+                            Console.WriteLine($"{itemA.ItemId}\t{itemA.Titel}\t{itemA.Uitgeleend}\t{item.SoortItem}");
                         }
                         continue;
                     }

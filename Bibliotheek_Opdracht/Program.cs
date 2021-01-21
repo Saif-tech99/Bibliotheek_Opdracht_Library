@@ -12,8 +12,7 @@ namespace Bibliotheek_Opdracht
         static void Main(string[] args)
         {
             SoortItem soortItem = new SoortItem();
-            SoortItem soortItem1 = new SoortItem();
-            SoortItem soortItem2 = new SoortItem();
+
             CollectieBibliotheek collectie = new CollectieBibliotheek();
             Item item = new Item()
             {
@@ -26,28 +25,28 @@ namespace Bibliotheek_Opdracht
             {
                 Titel = "dio",
                 ItemId = 2,
-                SoortItem = soortItem1,
+                SoortItem = soortItem,
                 Uitgeleend = false
             };
             Item item2 = new Item()
             {
                 Titel = "kuma",
                 ItemId = 3,
-                SoortItem = soortItem1,
+                SoortItem = soortItem,
                 Uitgeleend = false
             };
             Item item3 = new Item()
             {
                 Titel = "dedo",
                 ItemId = 4,
-                SoortItem = soortItem1,
+                SoortItem = soortItem,
                 Uitgeleend = false
             };
             Item item4 = new Item()
             {
                 Titel = "dada",
-                ItemId = 4,
-                SoortItem = soortItem2,
+                ItemId = 5,
+                SoortItem = soortItem,
                 Uitgeleend = false
             };
             collectie.ItemsInCollectie.Add(item);
@@ -57,14 +56,34 @@ namespace Bibliotheek_Opdracht
             collectie.ItemsInCollectie.Add(item4);
             collectie.AfgevoerdeItems.Add(item4);
             collectie.AfgevoerdeItems.Add(item3);
-            soortItem.Equals(1);
-            soortItem1.Equals(2);
-            soortItem2.Equals(3);
+
             Bezoeker bezoeker = new Bezoeker();
             Lid lid = new Lid();
-            bezoeker.ToonOverzicht(collectie);
-            //bezoeker.ZoekItem(collectie);
            
+
+            Console.WriteLine(" PRESS L TO LOGIN AS A MEMBER\n PRESS B TO LOGIN AS GUEST\n PRESS M TO LIGIN AS WORKER...");
+            ConsoleKey key = Console.ReadKey().Key;
+            if (key==ConsoleKey.L)
+            {
+                lid.ZoekItem(collectie);
+                lid.ToonOverzicht(collectie);
+                lid.Terugbrengen(item);
+                lid.Uitlenen(item, collectie);
+            }
+            else if (key == ConsoleKey.B)
+            {
+                bezoeker.ZoekItem(collectie);
+                bezoeker.ToonOverzicht(collectie);
+                bezoeker.RegistreeralsLid();
+            }
+            else if (key == ConsoleKey.M)
+            {
+
+            }
+
+
+
+
         }
     }
 }
